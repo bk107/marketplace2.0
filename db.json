@@ -1,0 +1,33 @@
+{
+    "persons": [
+       
+    ],
+    "products": [
+        {
+            "id": "prdct000001",
+            "name": "Bose Mini Soundlink II"
+        }
+    ],
+    "companies": [
+        {
+            "id": "cmpny000001",
+            "name": "Bose GmbH"
+        }
+    ],
+    "priceLists": [
+        {
+            "id": "prclst000001",
+            "name": "Bose Price List 1",
+            "seller": "cmpny000001"
+        }
+    ],
+    "priceListItems": [
+        {
+            "id": "pli000001",
+            "product":"prdct000001",
+            "priceList": "prclst000001",
+            "price": 180
+        }
+    ]
+
+}

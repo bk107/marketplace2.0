@@ -1,0 +1,58 @@
+objects needed MVP:
+
+-person
+    firstname:String
+    lastname:String
+    address:address
+    company:company
+    date_of_birth:Date
+    username:String
+    password:String(hash)
+    email:Email
+-address
+    type:Picklist[billing,shipping]
+    country:String
+    street:String
+    number:String
+    postal_code:String
+    state:String
+    city:String
+-company
+    address:address
+    name:String
+-product
+    name:String
+    sku:String
+-media
+    product:product
+    uri:String
+-cart
+    person:person
+    total:Decimal
+    getItems():List<cartitem>
+-cartitem
+    product:product
+    price:Decimal
+    quantity:Integer
+    cart:cart
+-order
+    orderDate:Date
+    person:person
+    seller:company
+    cart:cart
+    total:Decimal
+    getItems():List<OrderItem>
+-orderitem
+    order:order
+    product:product
+    price:price
+-pricelist
+    seller:company
+    name: String
+    getItems():List<PriceListItem>()
+-pricelistitem
+    product:product
+    price: Decimal
+    pricelist: pricelist
+
+  

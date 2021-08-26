@@ -1,0 +1,4 @@
+{
+    "/priceListItems/:priceListId": "/priceListItems?priceList=:priceListId",
+    "/products/:productId": "/products?id=:productId"
+}
