@@ -1,18 +1,37 @@
 .app-header {
-    padding:10px 20px;
-    border-bottom:1px solid rgba(0,0,0,0.1);
+    border-bottom:2px solid rgba(0,0,0,0.1);
     display:flex;
     flex-direction: row;
+    position: relative;
 }
 
 .app-header ul {
     flex:1;
     display:flex;
+    padding: 0;
+    margin: 0;
 }
 
 .app-header ul li {
     list-style-type: none;
-    margin:0px 10px;
+    margin:0px 5px;
+    padding:20px;
+}
+
+.app-header a {
+    text-decoration: none;
+    border-bottom:2px solid transparent;
+    padding:20px 0;
+}
+
+.app-header a:hover,
+.app-header a.selected {
+    border-bottom-color:rgb(34, 34, 34);
+}
+
+.app-header a,
+.app-header a:visited {
+    color:black;
 }
 
 .app-header ul.app-header-fix-items {

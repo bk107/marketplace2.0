@@ -1,15 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import './AppHeader.css'
+import AppHeaderNavLink from './AppHeaderNavLink'
 
 export default function AppHeader() {
     return (
         <div className="app-header">
             <ul>
-                <li> <NavLink to="/"> Home </NavLink> </li>
+                <li> <AppHeaderNavLink to="/" label="Home" /></li>
             </ul>
             <ul className="jc-flex-end">
-                <li> <NavLink to="/my-account"> My Account </NavLink> </li>
+                <li> <AppHeaderNavLink to="/my-account" label="My Account" /></li>
                 <li> Cart </li>
                 <li> Register </li>
             </ul>

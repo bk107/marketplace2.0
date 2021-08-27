@@ -1,8 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from '../components/Home/Home'
+import MyAccount from '../components/MyAccount/MyAccount'
 import Register from '../components/Register/Register'
 import SignIn from '../components/SignIn/SignIn'
+import NotFoundPage from './_404'
 
 const Routes = () => {
 
@@ -10,7 +12,10 @@ const Routes = () => {
         <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/my-account" component={MyAccount} />
+            <Route path="*">
+                <NotFoundPage />
+            </Route>
         </Switch>
     )
 
