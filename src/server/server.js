@@ -8,7 +8,6 @@ const jsonServer = "http://localhost:3004"
 const app = express();
 
 const cors = require('cors');
-const { json } = require("express");
 
 app.use(cors())
 
@@ -17,6 +16,7 @@ app.get('/', function (req, res) {
 })
 
 const getItemsForPriceList = async (priceList) => {
+
     let items = []
     let itemsResponse;
 
@@ -29,8 +29,37 @@ const getItemsForPriceList = async (priceList) => {
     items = await itemsResponse.json()
 
     items = await getProductsForPriceListItems(items)
+    
+    const seller = await getSellerById(priceList.seller)
+
+    items = await enrichPriceListItemsWithSellerName(items, seller);
 
     priceList.items = items;
+}
+
+const getSellerById = async (sellerId) => {
+    let seller;
+    let response;
+
+    try {
+        response = await fetch(jsonServer + `/companies/${sellerId}`)
+    } catch (ex) {
+        console.error(ex);
+    }
+
+    seller = await response.json();
+
+    return seller;
+}
+
+const enrichPriceListItemsWithSellerName = async (priceListItems, seller) => {
+    let enrichedPriceListItems = []
+    for (let i = 0; i < priceListItems.length; i++) {
+        let item = priceListItems[i];
+        item.seller = seller;
+        enrichedPriceListItems.push(item)
+    }
+    return enrichedPriceListItems;
 }
 
 const getProductsForPriceListItems = async (priceListItems) => {
@@ -40,7 +69,6 @@ const getProductsForPriceListItems = async (priceListItems) => {
         item.productBean = await getProductById(priceListItems[i].product)
         enrichedPriceListItems.push(item)
     }
-    console.log("enrichedPriceListItems",enrichedPriceListItems)
     return enrichedPriceListItems;
 }
 
@@ -55,8 +83,6 @@ const getProductById = async (productId) => {
     }
 
     product = await productResponse.json();
-
-    console.log("product", product)
 
     return product[0];
 }
@@ -78,8 +104,6 @@ app.get('/getAllProductsWithPrices', async function (req, res) {
     let priceLists = await priceListsResponse.json()
 
     await getAllItemsForPriceLists(priceLists)
-
-    console.log("priceLists", priceLists)
 
     let responseData = []
 

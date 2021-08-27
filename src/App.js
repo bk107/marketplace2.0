@@ -1,13 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Routes from './pages/_routes'
+import AppHeader from './components/AppHeader/AppHeader';
+import { BrowserRouter } from 'react-router-dom';
+import AppContent from './components/AppContent/AppContent';
 
 function App() {
   return (
     <div className="App">
-        <Routes />
+      <BrowserRouter>
+        <AppHeader />
+        <AppContent>
+          <Routes />
+        </AppContent>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App

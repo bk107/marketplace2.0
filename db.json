@@ -6,12 +6,24 @@
         {
             "id": "prdct000001",
             "name": "Bose Mini Soundlink II"
+        },
+        {
+            "id": "prdct000002",
+            "name": "Magic Keyboard"
+        },
+        {
+            "id": "prdct000003",
+            "name": "iPhone XR"
         }
     ],
     "companies": [
         {
             "id": "cmpny000001",
             "name": "Bose GmbH"
+        },
+        {
+            "id": "cmpny000002",
+            "name": "Apple Inc."
         }
     ],
     "priceLists": [
@@ -19,6 +31,11 @@
             "id": "prclst000001",
             "name": "Bose Price List 1",
             "seller": "cmpny000001"
+        },
+        {
+            "id": "prclst000002",
+            "name": "Apple Inc.",
+            "seller": "cmpny000002"
         }
     ],
     "priceListItems": [
@@ -27,6 +44,18 @@
             "product":"prdct000001",
             "priceList": "prclst000001",
             "price": 180
+        },
+        {
+            "id": "pli000002",
+            "product":"prdct000002",
+            "priceList": "prclst000002",
+            "price": 100
+        },
+        {
+            "id": "pli000003",
+            "product":"prdct000003",
+            "priceList": "prclst000002",
+            "price": 650
         }
     ]
 

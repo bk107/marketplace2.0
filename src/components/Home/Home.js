@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import ProductSlider from '../ProductSlider/ProductSlider'
+import './Home.css'
 
 export default function Home() {
 
@@ -16,18 +18,8 @@ export default function Home() {
     useEffect(fetchProducts, []);
 
     return (
-        <React.Fragment>
-            <h1> Home </h1>
-            {
-                products.map(product => {
-                    return (
-                        <div className="product" key={product.productBean.name}>
-                            <div> Name: {product.productBean.name}</div>
-                            <div> Price: {product.price}</div>
-                        </div>
-                    )
-                })
-            }
-        </React.Fragment>
+        <div className="home">
+              <ProductSlider title="Popular Products" products={products} />
+        </div>
     )
 }
