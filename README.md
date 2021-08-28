@@ -22,11 +22,11 @@ json-server --watch db.json --port 3004 --routes routes.json
 ```
 
 ### start middleware node js server
-navigate to src/server, 
+navigate to src/server, e.g.
 ```
-e.g. cd src/server
+cd src/server
 ```
-
+then
 ```
 node server
 ```
