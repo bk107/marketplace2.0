@@ -28,9 +28,7 @@ npm install cors
 ```
 
 ## Starting the application
-```
 for each step you will need a different terminal window
-```
 
 ### start json server
 ```
