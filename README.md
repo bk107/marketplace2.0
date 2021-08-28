@@ -2,35 +2,16 @@
 
 ## Dependencies
 
-### npm install
-```
-npm install
-``` 
-
 ### json-server
+sudo this in case it fails, it loves to be treated like that
 ```
 npm install -g json-server
 ```
 
-### react-router-dom
+### npm install
 ```
-npm install react-router-dom
-```
-
-### express
-```
-npm install express
-```
-
-### node-fetch
-```
-npm install node-fetch
-```
-
-### cors
-```
-npm install cors
-```
+npm install
+``` 
 
 ## Starting the application
 for each step you will need a different terminal window
