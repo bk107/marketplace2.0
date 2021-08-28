@@ -2,9 +2,14 @@
 
 ## Dependencies
 
+### npm install
+```
+npm install
+``` 
+
 ### json-server
 ```
-npm install json-server
+npm install -g json-server
 ```
 
 ### react-router-dom
