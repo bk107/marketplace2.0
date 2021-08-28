@@ -5,8 +5,8 @@ export default function ProductSliderCardName({ product }) {
 
     return (
         <div className="product-slider-card-product-name">
-            <NavLink to={`/products/${product.id}`}>
-                {product.productBean.name}
+            <NavLink to={`/products/${product.productId}`}>
+                {product.product.name}
             </NavLink>
         </div>
     )

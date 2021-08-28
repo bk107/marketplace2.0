@@ -13,7 +13,8 @@
         },
         {
             "id": "prdct000003",
-            "name": "iPhone XR"
+            "name": "iPhone XR",
+            "releaseDate": "2021-08-25"
         }
     ],
     "companies": [
@@ -30,31 +31,31 @@
         {
             "id": "prclst000001",
             "name": "Bose Price List 1",
-            "seller": "cmpny000001"
+            "companyId": "cmpny000001"
         },
         {
             "id": "prclst000002",
             "name": "Apple Inc.",
-            "seller": "cmpny000002"
+            "companyId": "cmpny000002"
         }
     ],
     "priceListItems": [
         {
             "id": "pli000001",
-            "product":"prdct000001",
-            "priceList": "prclst000001",
+            "productId":"prdct000001",
+            "priceListId": "prclst000001",
             "price": 180
         },
         {
             "id": "pli000002",
-            "product":"prdct000002",
-            "priceList": "prclst000002",
+            "productId":"prdct000002",
+            "priceListId": "prclst000002",
             "price": 100
         },
         {
             "id": "pli000003",
-            "product":"prdct000003",
-            "priceList": "prclst000002",
+            "productId":"prdct000003",
+            "priceListId": "prclst000002",
             "price": 650
         }
     ]

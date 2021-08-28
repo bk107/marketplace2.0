@@ -7,7 +7,7 @@ import ProductSliderCardSeller from './ProductSliderCardSeller'
 export default function ProductSliderCard({ product }) {
 
     return (
-        <div className="product-slider-card" key={product.productBean.name}>
+        <div className="product-slider-card" key={product.product.name}>
             <ProductSliderCardName product={product} />
             <ProductSliderCardPrice product={product} />
             <ProductSliderCardSeller product={product} />

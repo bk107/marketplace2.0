@@ -6,7 +6,7 @@ export default function ProductSliderCardSeller({ product }) {
     return (
         <div className="product-slider-card-product-seller">
             {'Sold By: '}
-            <NavLink to={`/sellers/${product.seller.id}`}>
+            <NavLink to={`/company/${product.seller.id}`}>
                 {product.seller.name}
             </NavLink>
         </div>

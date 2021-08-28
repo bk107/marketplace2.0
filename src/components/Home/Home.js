@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import OneColumnTemplate from '../../templates/OneColumnTemplate/OneColumnTemplate'
 import ProductSlider from '../ProductSlider/ProductSlider'
 import './Home.css'
+import { IsOlderThan } from '../../utils/DateUtil'
 
 export default function Home() {
 
@@ -11,6 +13,7 @@ export default function Home() {
         fetch(process.env.REACT_APP_MIDDLEWARE_SERVER + '/getAllProductsWithPrices')
             .then(res => res.json())
             .then(response => {
+                console.log("products", response)
                 setProducts(response)
             })
     }
@@ -18,8 +21,15 @@ export default function Home() {
     useEffect(fetchProducts, []);
 
     return (
-        <div className="home">
-              <ProductSlider title="Popular Products" products={products} />
-        </div>
+        <OneColumnTemplate
+            classNames={"Home"}
+        >
+
+            <ProductSlider title="Popular Products" products={products} />
+            <ProductSlider title="Apple Products" products={products.filter(p => p.seller.name.includes("Apple"))} />
+            <ProductSlider title="Bose Products" products={products.filter(p => p.seller.name.includes("Bose"))} />
+            {/* <ProductSlider title="New Products" products={products.filter(p => p.productBean.releaseDate ? IsOlderThan(new Date(), new Date(p.productBean.releaseDate)) : false)} /> */}
+
+        </OneColumnTemplate>
     )
 }

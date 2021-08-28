@@ -1,6 +1,7 @@
 import React from 'react'
-import ProductSliderCard from '../ProductSliderCard/ProductSliderCard'
 import './ProductSlider.css'
+import ProductSliderCards from './ProductSliderCards'
+import ProductSliderTitle from './ProductSliderTitle'
 
 export default function ProductSlider({ products, title }) {
 
@@ -9,18 +10,8 @@ export default function ProductSlider({ products, title }) {
     if (products.length > 0) {
         content =
             <div className="product-slider">
-                <div className="product-slider-title">
-                    {title}
-                </div>
-                <div className="product-slider-cards">
-                    {
-                        products.map(product => {
-                            return (
-                                <ProductSliderCard product={product} key={product.id} />
-                            )
-                        })
-                    }
-                </div>
+                <ProductSliderTitle title={title} />
+                <ProductSliderCards products={products} />
             </div>
     }
 

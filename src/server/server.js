@@ -15,104 +15,46 @@ app.get('/', function (req, res) {
     res.send('Hello World!')
 })
 
-const getItemsForPriceList = async (priceList) => {
+const enrichPriceListItemDataWithSellers = async(priceListItemData) => {
+    for(let i = 0; i < priceListItemData.length; i++) {
+        const seller = await fetchCompanyById(priceListItemData[i].priceList.companyId)
+        priceListItemData[i].seller = seller;
+    }
+    return priceListItemData
+}
 
-    let items = []
-    let itemsResponse;
+const fetchCompanyById = async(companyId) => {
+
+    let company
+    let response
 
     try {
-        itemsResponse = await fetch(jsonServer + `/priceListItems?priceList=${priceList.id}`)
-    } catch (ex) {
-        console.error(ex);
+        response = await fetch(jsonServer + "/companies/"+companyId)
+    } catch(ex) {
+        console.error(ex)
     }
 
-    items = await itemsResponse.json()
+    company = await response.json()
 
-    items = await getProductsForPriceListItems(items)
-    
-    const seller = await getSellerById(priceList.seller)
-
-    items = await enrichPriceListItemsWithSellerName(items, seller);
-
-    priceList.items = items;
-}
-
-const getSellerById = async (sellerId) => {
-    let seller;
-    let response;
-
-    try {
-        response = await fetch(jsonServer + `/companies/${sellerId}`)
-    } catch (ex) {
-        console.error(ex);
-    }
-
-    seller = await response.json();
-
-    return seller;
-}
-
-const enrichPriceListItemsWithSellerName = async (priceListItems, seller) => {
-    let enrichedPriceListItems = []
-    for (let i = 0; i < priceListItems.length; i++) {
-        let item = priceListItems[i];
-        item.seller = seller;
-        enrichedPriceListItems.push(item)
-    }
-    return enrichedPriceListItems;
-}
-
-const getProductsForPriceListItems = async (priceListItems) => {
-    let enrichedPriceListItems = []
-    for (let i = 0; i < priceListItems.length; i++) {
-        let item = priceListItems[i];
-        item.productBean = await getProductById(priceListItems[i].product)
-        enrichedPriceListItems.push(item)
-    }
-    return enrichedPriceListItems;
-}
-
-const getProductById = async (productId) => {
-    let product;
-    let productResponse;
-
-    try {
-        productResponse = await fetch(jsonServer + `/products/${productId}`)
-    } catch (ex) {
-        console.error(ex);
-    }
-
-    product = await productResponse.json();
-
-    return product[0];
-}
-
-const getAllItemsForPriceLists = async (priceLists) => {
-    for (let i = 0; i < priceLists.length; i++) {
-        await getItemsForPriceList(priceLists[i])
-    }
+    return company
 }
 
 app.get('/getAllProductsWithPrices', async function (req, res) {
 
-    let priceListsResponse = await fetch(jsonServer + "/priceLists")
+    let response = [];
 
-    if (!priceListsResponse.ok) {
-        throw new Error(`HTTP error! status: ${priceListsResponse.status}`);
+    try {
+        response = await fetch(jsonServer + "/priceListItems?_expand=priceList&_expand=product")
+    } catch(ex) {
+        console.error(e)
     }
 
-    let priceLists = await priceListsResponse.json()
+    let priceListItemData = await response.json()
 
-    await getAllItemsForPriceLists(priceLists)
-
-    let responseData = []
-
-    for(let i = 0; i < priceLists.length; i++) {
-        responseData.push(...priceLists[i].items)
-    }
+    priceListItemData = await enrichPriceListItemDataWithSellers(priceListItemData)
 
     res.send(
-        responseData
+        priceListItemData
     )
 
 })

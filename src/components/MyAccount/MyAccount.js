@@ -6,24 +6,25 @@ export default function MyAccount() {
 
     const context = useContext(AppContext)
 
-    useEffect(() => {
-        if (context.user == null) {
-            // context.setUser({
-            //     username: "test"
-            // })
-        }
-    }, context.user)
+    const handleUserChange = () => {
+        console.log("context.user changed", context.user);
+    }
+
+    useEffect(handleUserChange, context.user)
+
+    const MainContent =
+        context.user ?
+            <div> {context.user.username} </div> :
+            "you are not logged in"
+
+
 
     return (
         <OneColumnTemplate
             title={"My Account"}
             classNames={"my-account"}
         >
-            {
-                context.user ?
-                    <div> {context.user.username} </div> :
-                    "you are not logged in"
-            }
+            {MainContent}
         </OneColumnTemplate>
     )
 }
