@@ -1,5 +1,7 @@
 
 import './App.css';
+import './buttons.css'
+
 import Routes from './pages/_routes'
 import AppHeader from './components/AppHeader/AppHeader';
 import { BrowserRouter } from 'react-router-dom';

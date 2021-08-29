@@ -2,6 +2,21 @@
     "persons": [
        
     ],
+    "images": [
+        {
+            "uri": "https://m.media-amazon.com/images/I/61l1z00TSwL._AC_SL1156_.jpg",
+            "productId": "prdct000001"
+        },
+        {
+            "uri": "https://m.media-amazon.com/images/I/61nnR4RZbsL._AC_SL1000_.jpg",
+            "productId": "prdct000002"
+        },
+        {
+            "uri": "https://m.media-amazon.com/images/I/519KIlHA2wL._AC_SL1024_.jpg",
+            "productId": "prdct000003"
+        }
+
+    ],
     "products": [
         {
             "id": "prdct000001",

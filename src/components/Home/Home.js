@@ -9,12 +9,21 @@ export default function Home() {
     const [products, setProducts] = useState([])
 
     const fetchProducts = () => {
-        fetch(process.env.REACT_APP_MIDDLEWARE_SERVER + '/getAllProductsWithPrices')
+
+        const productsFromLocalStorage = localStorage.getItem("products")
+
+        if(productsFromLocalStorage) {
+            setProducts(JSON.parse(productsFromLocalStorage))
+        } else {
+            fetch(process.env.REACT_APP_MIDDLEWARE_SERVER + '/getAllProductsWithPrices')
             .then(res => res.json())
             .then(response => {
                 console.log("products", response)
                 setProducts(response)
+                localStorage.setItem("products", JSON.stringify(response));
             })
+        }
+
     }
 
     useEffect(fetchProducts, []);
