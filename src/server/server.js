@@ -17,6 +17,7 @@ app.get('/', function (req, res) {
 
 const enrichPriceListItemDataWithSellers = async (priceListItems) => {
     for (let i = 0; i < priceListItems.length; i++) {
+        console.log("priceListItem", priceListItems[i])
         const seller = await fetchCompanyById(priceListItems[i].priceList.companyId)
         priceListItems[i].seller = seller;
     }
@@ -59,13 +60,50 @@ app.get('/getAllProductsWithPrices', async function (req, res) {
     let priceListItemData = await doFetch("/priceListItems?_expand=priceList&_expand=product")
 
     priceListItemData = await enrichPriceListItemDataWithSellers(priceListItemData)
-    
+
     priceListItemData = await enrichPriceListItemsWithProductImages(priceListItemData)
 
     res.send(
         priceListItemData
     )
 
+})
+
+app.get('/product/:id', async (req, res) => {
+
+    const result = await doFetch(`/products?id=${req.params.id}&_embed=images&_embed=priceListItems`)
+
+    result[0].priceList = await doFetch(`/priceLists?id=${result[0].priceListItems[0].priceListId}&_expand=company`)
+
+    res.send(
+        result[0]
+    )
+
+})
+
+app.get('/getProductsBySellerId/:sellerId', async (req, res) => {
+
+    const priceLists = await doFetch("/priceLists?companyId=" + req.params.sellerId + "&_embed=priceListItems&_expand=company");
+
+    let priceListItemData = []
+
+    for (let i = 0; i < priceLists.length; i++) {
+        const priceListItems = await doFetch("/priceListItems?_expand=priceList&_expand=product&priceListId=" + priceLists[i].id)
+        priceListItemData.push(
+            ...priceListItems
+        )
+    }
+
+    console.log("priceListItemData", priceListItemData);
+
+    priceListItemData = await enrichPriceListItemDataWithSellers(priceListItemData)
+
+    priceListItemData = await enrichPriceListItemsWithProductImages(priceListItemData)
+
+    res.send(
+        priceListItemData
+    )
+    
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`, `open http://localhost:${port}`));
