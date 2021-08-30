@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function ProductSliderCardPrice({ product }) {
+export default function ProductSliderCardPrice({ price }) {
 
     return (
         <div className="product-slider-card-product-price">
-            Price: {product.price}
+            Price: {price}
         </div>
     )
 }

@@ -1,0 +1,17 @@
+.product-detail-hero {
+    display:flex;
+}
+.product-detail-image {
+    padding:50px;
+    flex:1;
+}
+
+.product-detail-info {
+    padding:50px;
+    flex:2;
+}
+
+
+.product-detail-image img {
+    max-width:300px;
+}
