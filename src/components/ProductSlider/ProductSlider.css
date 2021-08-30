@@ -6,13 +6,14 @@
 .product-slider-title {
     text-align: left;
     font-size:1.5rem;
+    margin-bottom:20px;
 }
 
 .product-slider-cards {
     display:flex;
     max-width:100%;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
     flex-wrap: wrap;
     overflow:auto;
 }
