@@ -81,6 +81,16 @@ app.get('/product/:id', async (req, res) => {
 
 })
 
+app.get('/company/:id', async (req, res) => {
+
+    const result = await doFetch(`/companies?id=${req.params.id}`)
+
+    res.send(
+        result[0]
+    )
+
+})
+
 app.get('/getProductsBySellerId/:sellerId', async (req, res) => {
 
     const priceLists = await doFetch("/priceLists?companyId=" + req.params.sellerId + "&_embed=priceListItems&_expand=company");

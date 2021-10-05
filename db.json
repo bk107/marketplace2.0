@@ -35,7 +35,8 @@
     "companies": [
         {
             "id": "cmpny000001",
-            "name": "Bose GmbH"
+            "name": "Bose GmbH",
+            "description": "Bose Corporation is an American manufacturing company that predominantly sells audio equipment. The company was established by Amar Bose in 1964 and is based in Framingham, Massachusetts."
         },
         {
             "id": "cmpny000002",

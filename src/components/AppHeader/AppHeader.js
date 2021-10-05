@@ -11,7 +11,9 @@ export default function AppHeader() {
             <ul className="jc-flex-end">
                 <li> <AppHeaderNavLink to="/my-account" label="My Account" /></li>
                 <li> Cart </li>
-                <li> Register </li>
+                <li>
+                    <AppHeaderNavLink to="/sign-up" label="Register / Login" />
+                </li>
             </ul>
         </div>
     )

@@ -1,8 +1,10 @@
 .app-header {
-    border-bottom:2px solid rgba(0,0,0,0.1);
+    /* border-bottom:2px solid rgba(0,0,0,0.1); */
     display:flex;
     flex-direction: row;
     position: relative;
+    width: 900px;
+    margin: 20px auto;
 }
 
 .app-header ul {
@@ -16,6 +18,8 @@
     list-style-type: none;
     margin:0px 5px;
     padding:20px;
+    display: flex;
+    align-items: center;
 }
 
 .app-header a {
@@ -24,8 +28,6 @@
     padding:20px 0;
     white-space: nowrap;
 }
-
-.app-header a:hover,
 .app-header a.selected {
     border-bottom-color:rgb(34, 34, 34);
 }
